@@ -213,11 +213,11 @@ if __name__ == '__main__':
     parser.add_argument('--datasets-path', required=True, help='Specify the root folder of all datsets')
     parser.add_argument('--num-clusters', required=True, help='Specify the number of clusters desired.')
     parser.add_argument('--algo', default='twfinch', help='Options: [twfinch, abd, spectral, optics, dbscan]')
-    parser.add_argument('--features', default='orb', help='Options: [sift, orb, idt]')
+    parser.add_argument('--features', default='orb', help='Options: [sift, orb]')
     parser.add_argument('--tw-finch', action='store_true', default=True)
     parser.add_argument('--verbose', action='store_true', default=True)
-    parser.add_argument('--existing-gt', action='store_true')
-    parser.add_argument('--save-labels', action='store_true')
+    parser.add_argument('--existing-gt', action='store_true', help='Specify if the video has existing ground truth labels.')
+    parser.add_argument('--save-labels', action='store_true', help='Specify if you want to save prediction labels.')
     args = parser.parse_args()
     _ = run_video_clustering(video_name=args.video_name,
                           dataset_name=args.dataset_name,

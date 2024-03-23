@@ -1,3 +1,4 @@
+import argparse
 import os
 
 from math import ceil
@@ -156,27 +157,29 @@ def resample_directory(dataset_name, datasets_path, new_video_flag = False, skip
 
 
 if __name__ == '__main__':
-    video_name = 'milk/P27_stereo01_P27_milk.avi'
-    dataset_name = 'MPII_Cooking'
-    datasets_path = '/media/ntu/shengyang/Action_Segmentation_Datasets'
-    new_video_flag = False
-    run_on_directory = True
-    skip_existing = True
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dataset-name', required=True, help='Specify the name of dataset. Options: [Breakfast, 50Salads, YTI]')
+    parser.add_argument('--datasets-path', required=True, help='Specify the root folder of all datasets.')
+    parser.add_argument('--video-name', default=None, help='Specify the video file name (including extension).')
+    parser.add_argument('--new-video-flag', action='store_true', help='Specify whether to resample to a target framerate or not.')
+    parser.add_argument('--run-on-directory', action='store_true', help='Specify whether to run visualisation on the whole dataset directory.')
+    parser.add_argument('--skip-existing', action='store_true', help='Specify whether to skip videos that exist in the resampled folder.')
+    args = parser.parse_args()
 
-    if run_on_directory:
-        if new_video_flag:
+    if args.run_on_directory:
+        if args.new_video_flag:
             print("Running on directory of new videos...")
-            resample_directory(dataset_name, datasets_path, new_video_flag, skip_existing)
+            resample_directory(args.dataset_name, args.datasets_path, args.new_video_flag, args.skip_existing)
         else:
             print("Running on directory existing videos...")
-            resample_directory(dataset_name, datasets_path, new_video_flag, skip_existing)
+            resample_directory(args.dataset_name, args.datasets_path, args.new_video_flag, args.skip_existing)
 
     else:
-        if new_video_flag:
+        if args.new_video_flag:
             print("Running on new video...")
-            run_on_new(video_name, dataset_name, datasets_path)
+            run_on_new(args.video_name, args.dataset_name, args.datasets_path)
         else:
             print("Running on existing video...")
-            run_on_existing(video_name, dataset_name, datasets_path)
+            run_on_existing(args.video_name, args.dataset_name, args.datasets_path)
 
     

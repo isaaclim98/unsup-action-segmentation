@@ -121,9 +121,9 @@ if __name__ == "__main__":
   parser.add_argument('--dataset-name', required=True, help='Specify the name of dataset. Options: [Breakfast, 50Salads, YTI]')
   parser.add_argument('--datasets-path', default='/media/ntu/shengyang/Action_Segmentation_Datasets', help='Specify the root folder of all datsets.')
   parser.add_argument('--algo', default='twfinch', help='Options: [twfinch, abd, spectral, optics, dbscan]')
-  parser.add_argument('--features', default='orb', help='Options: [sift, orb, idt]')
+  parser.add_argument('--features', default='orb', help='Options: [sift, orb]')
   parser.add_argument('--video-name', required=True, help='Specify the video file name (including extension).')
-  parser.add_argument('--dimension', default=64, type=int, help='Specify the descired dimensionality of the feature vector.')
+  parser.add_argument('--dimension', default=64, type=int, help='Specify the desired dimensionality of the feature vector.')
   parser.add_argument('--num-clusters', required=True, type=int, help='Specify the number of clusters desired.')
   args = parser.parse_args()
 

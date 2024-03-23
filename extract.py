@@ -1,5 +1,6 @@
-import numpy as np
+import argparse
 import cv2
+import numpy as np
 import os
 from sklearn.cluster import KMeans
 
@@ -271,14 +272,22 @@ def process_video_batch(video_path, feature_extractor='sift', dimension=64, batc
     save_histogram_to_txt(video_path, dataset_name, histo_list, extractor, dimension)
 
 if __name__ == '__main__':
-    directory_path = '/media/ntu/shengyang/Action_Segmentation_Datasets/Breakfast/resampled_videos/'
-    dataset_name = 'Breakfast'
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--dataset-name', required=True, help='Specify the name of dataset. Options: [Breakfast, 50Salads, YTI]')
+    parser.add_argument('--datasets-path', required=True, help='Specify the root folder of all datsets.')
+    parser.add_argument('--features', default='orb', help='Options: [sift, orb]')
+    parser.add_argument('--dimension', default=64, type=int, help='Specify the desired dimensionality of the feature vector.')
+    parser.add_argument('--skip-existing', action='store_true', help='Specify whether to skip videos that have features in the feature folder.')
+    args = parser.parse_args()
 
-    if dataset_name in ["Breakfast", "YTI"]:
+    directory_path = os.path.join(args.datasets_path, args.dataset_name, 'resampled_videos')
+
+    if args.dataset_name in ["Breakfast", "YTI"]:
         for root, dirs, files in os.walk(directory_path):
                 for dir_name in dirs:
                     curr_dir = os.path.join(directory_path, dir_name)
-                    process_directory(curr_dir, dataset_name, feature_extractor='sift', dimension=64, skip_existing=True)
+                    process_directory(curr_dir, args.dataset_name, feature_extractor=args.features, dimension=args.dimension, skip_existing=args.skip_existing)
                     
     else:
-        process_directory(directory_path, dataset_name, feature_extractor='sift', dimension=64, skip_existing=True)
+        process_directory(directory_path, args.dataset_name, feature_extractor=args.features, dimension=args.dimension, skip_existing=args.skip_existing)
+
