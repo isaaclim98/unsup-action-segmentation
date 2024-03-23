@@ -183,14 +183,14 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset-name', required=True, help='Specify the name of dataset. Options: [Breakfast, 50Salads, YTI]')
-    parser.add_argument('--datasets-path', default='/media/ntu/shengyang/Action_Segmentation_Datasets', help='Specify the root folder of all datsets')
+    parser.add_argument('--datasets-path', required=True, help='Specify the root folder of all datasets.')
     parser.add_argument('--algo', default='twfinch', help='Options: [twfinch, abd, spectral, optics, dbscan]')
-    parser.add_argument('--features', default='orb', help='Options: [sift, orb, idt]')
-    parser.add_argument('--video-name', default=None, help='Specify the video file name (including extension)')
-    parser.add_argument('--dir-name', default=None, help='Specify the parent folder of the video for Breakfast/YTI datasets')
-    parser.add_argument('--new-video-flag', action='store_true', help='Specify whether to use req_c (True) or y_pred (False)')
-    parser.add_argument('--run-on-directory', action='store_true', help='Specify whether to run visualisation on the whole dataset directory')
-    parser.add_argument('--show-plot', action='store_true', help='Specify whether to show the visualised plot on screen')
+    parser.add_argument('--features', default='orb', help='Options: [sift, orb]')
+    parser.add_argument('--video-name', default=None, help='Specify the video file name (including extension).')
+    parser.add_argument('--dir-name', default=None, help='Specify the parent folder of the video for Breakfast/YTI datasets.')
+    parser.add_argument('--new-video-flag', action='store_true', help='Specify whether to use req_c (True) or y_pred (False).')
+    parser.add_argument('--run-on-directory', action='store_true', help='Specify whether to run visualisation on the whole dataset directory.')
+    parser.add_argument('--show-plot', action='store_true', help='Specify whether to show the visualised plot on screen.')
     args = parser.parse_args()
 
     _ = run_visualisation(video_name=args.video_name,

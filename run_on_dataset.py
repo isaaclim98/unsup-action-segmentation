@@ -231,13 +231,13 @@ def run_dataset_clustering(
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('--dataset-name', required=True, help='Specify the name of dataset. Options: [Breakfast, 50Salads, YTI]')
-    parser.add_argument('--datasets-path', required=True, help='Specify the root folder of all datsets')
+    parser.add_argument('--datasets-path', required=True, help='Specify the root folder of all datsets.')
     parser.add_argument('--algo', default='twfinch', help='Options: [twfinch, abd, spectral, optics, dbscan]')
-    parser.add_argument('--features', default='orb', help='Options: [sift, orb, idt]')
+    parser.add_argument('--features', default='orb', help='Options: [sift, orb]')
     parser.add_argument('--tw-finch', action='store_true', default=True)
     parser.add_argument('--verbose', action='store_true', default=True)
-    parser.add_argument('--save-labels', action='store_true')
-    parser.add_argument('--skip-existing', action='store_true')
+    parser.add_argument('--save-labels', action='store_true', help='Specify if you want to save prediction labels.')
+    parser.add_argument('--skip-existing', action='store_true', help='Specify whether to skip videos that already have prediction labels in the label folder.')
     args = parser.parse_args()
     _ = run_dataset_clustering(dataset_name=args.dataset_name,
                           datasets_path=args.datasets_path,

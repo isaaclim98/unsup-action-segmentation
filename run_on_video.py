@@ -211,7 +211,7 @@ if __name__ == '__main__':
     parser.add_argument('--video-name', required=True, help='Specify the name of the video.')
     parser.add_argument('--dataset-name', required=True, help='Specify the name of dataset. Options: [Breakfast, 50Salads, YTI]')
     parser.add_argument('--datasets-path', required=True, help='Specify the root folder of all datsets')
-    parser.add_argument('--num-clusters', required=True, help='Specify the number of clusters desired.')
+    parser.add_argument('--num-clusters', default=1, type=int, help='Specify the number of clusters desired.')
     parser.add_argument('--algo', default='twfinch', help='Options: [twfinch, abd, spectral, optics, dbscan]')
     parser.add_argument('--features', default='orb', help='Options: [sift, orb]')
     parser.add_argument('--tw-finch', action='store_true', default=True)

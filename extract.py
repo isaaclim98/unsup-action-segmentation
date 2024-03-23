@@ -277,7 +277,7 @@ if __name__ == '__main__':
     parser.add_argument('--datasets-path', required=True, help='Specify the root folder of all datsets.')
     parser.add_argument('--features', default='orb', help='Options: [sift, orb]')
     parser.add_argument('--dimension', default=64, type=int, help='Specify the desired dimensionality of the feature vector.')
-    parser.add_argument('--skip-existing', action='store_true', help='Specify whether to skip videos that have features in the feature folder.')
+    parser.add_argument('--skip-existing', action='store_true', help='Specify whether to skip videos that already have features in the feature folder.')
     args = parser.parse_args()
 
     directory_path = os.path.join(args.datasets_path, args.dataset_name, 'resampled_videos')
