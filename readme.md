@@ -124,6 +124,9 @@ Input:
     * run-on-directory: Specify whether to run visualisation on the whole dataset directory (selected dataset only).
     * skip-existing: Specify whether to skip videos that exist in the resampled folder.
 
+Output:
+* Resampled video saved to: /your/path/here/Action_Segmentation_Datasets/{dataset-name}/resampled_videos/{video-name}.mp4
+
 ### 2. Feature Extraction:
 
 ```
@@ -138,6 +141,9 @@ Input:
     * dimension: Specify the desired dimensionality of the feature vector. (Default: 64)
 * [FLAGS]
     * skip-existing: Specify whether to skip videos that already have features in the feature folder.
+
+Output:
+* Histogram list saved to: /your/path/here/Action_Segmentation_Datasets/{dataset-name}/histoList{features}{dimension}/{video-name}.txt
 
 ### 3a. Run on a single video:
 
@@ -164,6 +170,9 @@ Input:
     * save-labels: Specify if you want to save prediction labels.
     * verbose: Specify verbosity of the code.
 
+Output:
+* Clustering labels saved to: /your/path/here/Action_Segmentation_Datasets/{dataset-name}/y_pred/{features}/{algo}/{video-name}_y_pred.txt
+
 ### 3b. Run on a dataset:
 
 ```
@@ -181,21 +190,24 @@ Input:
     * skip-existing: Specify whether to skip videos that already have prediction labels in the label folder.
     * verbose: Specify verbosity of the code.
 
+Output:
+* Clustering labels saved to: /your/path/here/Action_Segmentation_Datasets/{dataset-name}/y_pred/{features}/{algo}/{video-name}_y_pred.txt
+
 ### 4. Visualise cluster labels:
 
 If running on a single video in the 50Salads dataset, --dir-name is not needed, as shown below.
 ```
-python visualise.py --dataset-name 50Salads --algo spectral --video-name rgb-01-1.avi
+python visualise.py --dataset-name 50Salads --datasets-path /your/path/here/Action_Segmentation_Datasets --algo spectral --video-name rgb-01-1.avi
 ```
 
 If running on a single video in the Breakfast or YTI datasets, the video's parent directory should be input in --dir-name, as shown below.
 ```
-python visualise.py --dataset-name YTI --algo spectral --video-name jump_car_0002.mpg --dir-name jump_car
+python visualise.py --dataset-name YTI --datasets-path /your/path/here/Action_Segmentation_Datasets --algo spectral --video-name jump_car_0002.mpg --dir-name jump_car
 ```
 
 Else, if running on the whole directory for a selected dataset, do as shown below.
 ```
-python visualise.py --dataset-name YTI --algo dbscan --run-on-directory 
+python visualise.py --dataset-name YTI --datasets-path /your/path/here/Action_Segmentation_Datasets --algo dbscan --run-on-directory 
 ```
 Input:
 
@@ -210,3 +222,7 @@ Input:
     * run-on-directory: Specify whether to run visualisation on the whole dataset directory (selected dataset only).
     * new-video-flag: Specify whether to use req_c (True) or y_pred (False).
     * show-plot: Specify whether to show the visualised plot on screen. Only for use on systems with graphical display capabilities.
+
+Output:
+* Visualisation image saved to: /your/path/here/Action_Segmentation_Datasets/{dataset-name}/visualisations/{features}/{algo}/{video-name}.png
+
