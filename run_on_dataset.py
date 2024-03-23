@@ -224,7 +224,7 @@ def run_dataset_clustering(
         results_matrix_ds[file_num][6] = y_pred  # Encoded cluster labels n_clusters     
 
     avg_score = np.mean(results_matrix_ds[:, 1:4], axis=0)
-    print(f'Algo: {algo.upper()} | Features: {features.upper()} | Overall Results on {ds_name} Dataset : Acc:{avg_score[0]}, IOU: {avg_score[1]}, F-Score: {avg_score[2]}')
+    print(f'Algo: {algo.upper()} | Features: {features.upper()} | Overall Results on {ds_name} Dataset : Acc: {avg_score[0]}, mIoU: {avg_score[1]}, Macro F1: {avg_score[2]}')
     return results_matrix_ds
 
 

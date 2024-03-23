@@ -206,7 +206,7 @@ def run_video_clustering(
 
     if verbose:
         if existing_gt:
-            print(f'Algo: {algo.upper()} | Features: {features.upper()} | Evaluation on Video {activity_name}/{video_name} finshed in {np.round(end - start)} seconds: accuracy = {cur_acc} IoU = {iou} and f1 ={f1_macro}')
+            print(f'Algo: {algo.upper()} | Features: {features.upper()} | Evaluation on Video {activity_name}/{video_name} finshed in {np.round(end - start)} seconds: accuracy = {cur_acc} IoU = {iou} and f1 = {f1_macro}')
         else:
             print(f'Algo: {algo.upper()} | Features: {features.upper()} | Evaluation on Video {ds_name}/{video_name} finshed in {np.round(end - start)} seconds.')
 
