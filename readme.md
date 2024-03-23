@@ -89,7 +89,10 @@ Action_Segmentation_Datasets
 
 ## Usage on a single unlabelled video (Implementation):
 
-The following line will take in a raw video file located at the path: /your/path/here/Action_Segmentation_Datasets/Test/videos/repot_0005.mpg and output a labelled video at the path: /your/path/here/Action_Segmentation_Datasets/Test/labeled_videos/repot_0005.mp4.
+The following line will take in a raw video file located at the path: 
+`/your/path/here/Action_Segmentation_Datasets/Test/videos/repot_0005.mpg`
+and output a labelled video at the path: 
+`/your/path/here/Action_Segmentation_Datasets/Test/labeled_videos/repot_0005.mp4`
 
 ```
 python single_video.py --dataset-name Test --datasets-path /your/path/here/Action_Segmentation_Datasets --video-name repot_0005.mpg --algo twfinch --num-clusters 7
