@@ -52,6 +52,8 @@ def run_video_clustering(
     os.makedirs(os.path.join(path_ds, "y_pred", features, f"{algo}"), exist_ok=True)
     os.makedirs(os.path.join(path_ds, "req_c", features, f"{algo}"), exist_ok=True)
 
+    print("algo:", algo)
+
     # %% Load all needed files: Descriptor, GT & Mapping
     if os.path.exists(path_mapping):
         # Create the Mapping dict
@@ -157,15 +159,17 @@ def run_video_clustering(
         # iou_macro = metrics.jaccard_score(gt_labels, y_pred, average='macro')  # IOU
         # penalize equally over/under clustering
         iou = np.sum(metrics.jaccard_score(gt_labels, y_pred, average=None)) / n_clusters
+
+        cluster_labels = y_pred
+    else:
+        cluster_labels = req_c
     end = time.time()
 
     if save_labels:
         if existing_gt:
             output_file_path = os.path.join(path_ds, "y_pred", features, f"{algo}", f"{video_name}_y_pred.txt")
-            cluster_labels = y_pred
         else:
             output_file_path = os.path.join(path_ds, "req_c", features, f"{algo}", f"{video_name}_req_c.txt")
-            cluster_labels = req_c
 
         # Save the cluster labels to a text file
         with open(output_file_path, 'w') as file:
